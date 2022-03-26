@@ -6,7 +6,54 @@ namespace gb2_oop
     {
         static void Main()
         {
-            
+            BankAccount account = new BankAccount();
+
+            account.SetNumber(1);
+            account.SetType(BankAccount.BankAccountType.Credit);
+            account.SetBalance(20000);
+
+            Console.WriteLine($"{account.GetNumber()} - {account.GetType()}, {account.GetBalance()} $");
+        }
+    }
+
+    class BankAccount
+    {
+        private int Number = 0;
+        private int Balance = 0;
+        private BankAccountType Type = BankAccountType.None;
+        public enum BankAccountType
+        {
+            None,
+            Current,
+            Settlement,
+            Credit
+        }
+
+        public int GetNumber()
+        {
+            return Number;
+        }
+        public void SetNumber(int value)
+        {
+            Number = value;
+        }
+        
+        public long GetBalance()
+        {
+            return Balance;
+        }
+        public void SetBalance(int value)
+        {
+            Balance = value;
+        }
+        
+        public BankAccountType GetType()
+        {
+            return Type;
+        }
+        public void SetType(BankAccountType type)
+        {
+            Type = type;
         }
     }
 }
