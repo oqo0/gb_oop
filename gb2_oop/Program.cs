@@ -7,13 +7,14 @@ namespace gb2_oop
         static void Main()
         {
             BankAccount account = new BankAccount(4000, BankAccount.BankAccountType.Current);
+            
             Console.WriteLine($"{account.GetNumber()} - {account.GetType()}, {account.GetBalance()} $");
-            
-            BankAccount account2 = new BankAccount(5200, BankAccount.BankAccountType.Credit);
-            Console.WriteLine($"{account2.GetNumber()} - {account2.GetType()}, {account2.GetBalance()} $");
-            
-            BankAccount account3 = new BankAccount(2000, BankAccount.BankAccountType.Current);
-            Console.WriteLine($"{account3.GetNumber()} - {account3.GetType()}, {account3.GetBalance()} $");
+            account.Deposit(1000);
+            Console.WriteLine($"{account.GetNumber()} - {account.GetType()}, {account.GetBalance()} $");
+            account.Withdraw(2000);
+            Console.WriteLine($"{account.GetNumber()} - {account.GetType()}, {account.GetBalance()} $");
+            account.Withdraw(5000);
+            Console.WriteLine($"{account.GetNumber()} - {account.GetType()}, {account.GetBalance()} $");
         }
     }
 
@@ -68,6 +69,17 @@ namespace gb2_oop
         public BankAccountType GetType()
         {
             return Type;
+        }
+
+        public void Deposit(int value)
+        {
+            Balance += value;
+        }
+
+        public void Withdraw(int value)
+        {
+            if (Balance >= value)
+                Balance -= value;
         }
     }
 }
