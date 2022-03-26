@@ -6,13 +6,14 @@ namespace gb2_oop
     {
         static void Main()
         {
-            BankAccount account = new BankAccount();
-
-            account.UpdateNumber();
-            account.SetType(BankAccount.BankAccountType.Credit);
-            account.SetBalance(20000);
-
+            BankAccount account = new BankAccount(4000, BankAccount.BankAccountType.Current);
             Console.WriteLine($"{account.GetNumber()} - {account.GetType()}, {account.GetBalance()} $");
+            
+            BankAccount account2 = new BankAccount(5200, BankAccount.BankAccountType.Credit);
+            Console.WriteLine($"{account2.GetNumber()} - {account2.GetType()}, {account2.GetBalance()} $");
+            
+            BankAccount account3 = new BankAccount(2000, BankAccount.BankAccountType.Current);
+            Console.WriteLine($"{account3.GetNumber()} - {account3.GetType()}, {account3.GetBalance()} $");
         }
     }
 
@@ -22,6 +23,25 @@ namespace gb2_oop
         private int Number = UniqueNumber;
         private int Balance = 0;
         private BankAccountType Type = BankAccountType.None;
+
+        public BankAccount(int balance)
+        {
+            Balance = balance;
+            GenerateUniqueNumber();
+        }
+        public BankAccount(BankAccountType type)
+        {
+            Type = type;
+            GenerateUniqueNumber();
+
+        }
+        public BankAccount(int balance, BankAccountType type)
+        {
+            Balance = balance;
+            Type = type;
+            GenerateUniqueNumber();
+        }
+        
         public enum BankAccountType
         {
             None,
@@ -34,27 +54,20 @@ namespace gb2_oop
         {
             return Number;
         }
-        public void UpdateNumber()
+
+        private void GenerateUniqueNumber()
         {
             UniqueNumber++;
         }
-        
+
         public long GetBalance()
         {
             return Balance;
         }
-        public void SetBalance(int value)
-        {
-            Balance = value;
-        }
-        
+
         public BankAccountType GetType()
         {
             return Type;
-        }
-        public void SetType(BankAccountType type)
-        {
-            Type = type;
         }
     }
 }
