@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml.Schema;
 
 namespace gb2_oop
 {
@@ -14,9 +13,20 @@ namespace gb2_oop
             account.Balance = 20000;
 
             Console.WriteLine($"{account.Number} - {account.Type}, {account.Balance} $");
+            
+            BankAccount a = new BankAccount();
+            
+            a.Number = 0;
+            a.Type = BankAccount.BankAccountType.Credit;
+            a.Balance = 10000;
+            
+            Console.WriteLine($"{a.Number} - {a.Type}, {a.Balance} $"); // 1 - Credit, 10000 $
+            
+            BankAccount.TransferMoney(a, 1000);
+            
+            Console.WriteLine($"{a.Number} - {a.Type}, {a.Balance} $"); // 1 - Credit, 9000 $
         }
     }
-
     class BankAccount
     {
         private static int UniqueNumber = 0;
@@ -30,7 +40,10 @@ namespace gb2_oop
             Settlement,
             Credit
         }
-
+        public static void TransferMoney(BankAccount account, int amount)
+        {
+            account.Balance -= amount;
+        }
         public int Number
         {
             get
@@ -42,7 +55,6 @@ namespace gb2_oop
                 number = ++UniqueNumber;
             }
         }
-
         public int Balance
         {
             get
@@ -54,7 +66,6 @@ namespace gb2_oop
                 balance = value;
             }
         }
-
         public BankAccountType Type
         {
             get
