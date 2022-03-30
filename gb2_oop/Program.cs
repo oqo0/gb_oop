@@ -6,12 +6,13 @@ namespace gb2_oop
     {
         static void Main()
         {
-            Building building = new Building();
-            
-            building.Height = 100;
-            building.FloorsAmount = 9;
-            building.ApartamentAmount = 200;
-            building.EntranceAmount = 3;
+            Building building = new Building()
+            {
+                Height = 100,
+                FloorsAmount = 8,
+                ApartamentAmount = 220,
+                EntranceAmount = 4
+            };
 
             Console.WriteLine(building.Number); // 1
             Console.WriteLine(building.GetFloorHeight());
