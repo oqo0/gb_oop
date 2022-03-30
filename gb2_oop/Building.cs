@@ -2,7 +2,9 @@ namespace gb2_oop;
 
 public class Building
 {
-    private static int _number = 0;
+    private static int number = 0;
+
+    private int _number;
     private int _height;
     private int _floorsAmount;
     private int _apartamentsAmount;
@@ -10,7 +12,8 @@ public class Building
 
     internal Building()
     {
-        _number++;
+        number++;
+        _number = number;
     }
 
     internal int Number
