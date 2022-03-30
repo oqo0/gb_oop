@@ -12,12 +12,16 @@ namespace gb2_oop
             building.FloorsAmount = 9;
             building.ApartamentAmount = 200;
             building.EntranceAmount = 3;
+
+            Console.WriteLine(building.Number); // 1
+            Console.WriteLine(building.GetFloorHeight());
+            Console.WriteLine(building.GetFlatsInEntranceAmount());
+            Console.WriteLine(building.GetFlatsOnFloorAmount());
+            Console.WriteLine(building.GetFlatsOnFloorInEntranceAmount());
             
-            Console.WriteLine(building.Number);
-            
-            
+            Console.WriteLine("------------");
             Building building2 = new Building();
-            Console.WriteLine(building.Number);
+            Console.WriteLine(building.Number);  // 2
         }
     }
 }
