@@ -6,7 +6,6 @@ namespace gb2_oop
     {
         static void Main()
         {
-            
         }
     }
 }
